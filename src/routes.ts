@@ -1,9 +1,9 @@
 import { lazy } from "react";
-import { MenuItems } from "./models/MenuItem";
+import { NavItems } from "./models/NavItem";
 import About from "./pages/about/About";
 import Home from "./pages/home/Home";
 
-export const mainNavItems: MenuItems = [
+export const mainNavItems: NavItems = [
     {
         path: '/home',
         component: Home,
@@ -29,3 +29,12 @@ export const mainNavItems: MenuItems = [
         permissions: ['user']
     },
 ];
+
+export const staticNavItems: NavItems = [
+    {
+        path: '/product/:id',
+        component: lazy(() => import('./pages/product-details/ProductDetails')),
+        label: 'Product Details',
+        permissions: [],
+    },
+]  

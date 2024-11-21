@@ -10,7 +10,8 @@ const Home: React.FC = () => {
   return (
     <div>
       <div id="intro" className="text-center" ref={introRef}>
-        <h1>{title}</h1>
+        {/* Must become a main title component to avoid repeating syles */}
+        <h1 className="text-4xl font-extrabold">{title}</h1>
         <img src={logo} alt="my logo" className="inline max-h-[60vh]" />
         <br />
         <button>Buy products</button>

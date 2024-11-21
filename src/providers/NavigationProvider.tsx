@@ -1,9 +1,9 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { MenuItems } from "../models/MenuItem";
+import { NavItems } from "../models/NavItem";
 import { mainNavItems as items } from "../routes";
 
 const NavigationContext = createContext<{ 
-    mainNavItems: MenuItems,
+    mainNavItems: NavItems,
     isLoggedIn: boolean,
     setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>
 }>({ 
@@ -13,7 +13,7 @@ const NavigationContext = createContext<{
 });
 
 export const NavigationProvider: React.FC<{ children: React.ReactNode}> = ({ children }) => {
-    const [mainNavItems, setMainNavItems] = useState<MenuItems>([]);
+    const [mainNavItems, setMainNavItems] = useState<NavItems>([]);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {

@@ -11,10 +11,10 @@ function App() {
     <NavigationProvider>
       <NextUIProvider>              
         <BrowserRouter> 
-          <div className="App">
+          <div className="flex flex-col min-h-screen">
             {/* Use a Header custom component */}
             <Header />
-            <div className="my-content">
+            <div className="flex-grow p-4">
               <AppRoutes />
             </div>
             {/* Use a Footer custom component */}
