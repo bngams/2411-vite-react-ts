@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 import ScrollTo from '../../components/ui/scroll-to/ScrollTo';
-import './Home.css';
 import logo from './logo.svg';
 
 const Home: React.FC = () => {
@@ -9,9 +8,9 @@ const Home: React.FC = () => {
 
   return (
     <div>
-      <div id="intro" className="center" ref={introRef}>
+      <div id="intro" className="text-center" ref={introRef}>
         <h1>My super brand!</h1>
-        <img src={logo} alt="my logo" className="full-page-logo" />
+        <img src={logo} alt="my logo" className="inline max-h-[60vh]" />
         <br />
         <button>Buy products</button>
         <br />
