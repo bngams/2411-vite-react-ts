@@ -5,11 +5,12 @@ import logo from './logo.svg';
 const Home: React.FC = () => {
   const introRef = useRef(null);
   const goFurtherRef = useRef(null);
+  const title = 'My super brand!';
 
   return (
     <div>
       <div id="intro" className="text-center" ref={introRef}>
-        <h1>My super brand!</h1>
+        <h1>{title}</h1>
         <img src={logo} alt="my logo" className="inline max-h-[60vh]" />
         <br />
         <button>Buy products</button>

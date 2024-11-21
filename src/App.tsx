@@ -1,11 +1,10 @@
-import React from 'react';
 import './App.css';
 import Header from './components/layout/header/Header';
 import Footer from './components/layout/footer/Footer';
-import Home from './pages/home/Home';
 import { NextUIProvider } from '@nextui-org/react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import About from './pages/about/About';
+import { mainNavItems } from './routes';
+import { Suspense } from 'react';
 
 function App() {
   return (
@@ -15,10 +14,11 @@ function App() {
           {/* Use a Header custom component */}
           <Header />
           <div className="my-content">
+              <Suspense fallback={(<div>Loading...</div>)} />
               <Routes>
-                <Route path="/home" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/product" element={<About />} />
+                {mainNavItems.map((item, index) => ( 
+                  <Route key={index} path={item.path} element={<item.component/>} />
+                ))} 
               </Routes>
           </div>
           {/* Use a Footer custom component */}

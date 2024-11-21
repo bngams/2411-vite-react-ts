@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Button } from '@nextui-org/react';
 import { Link } from 'react-router-dom';
+import { mainNavItems } from '../../../routes';
 
 const Header: React.FC = () => {
   return (
@@ -10,21 +11,13 @@ const Header: React.FC = () => {
           <p className="font-bold text-inherit">ACME</p>
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
-          <NavbarItem>
-            <Link color="foreground" to="/home">
-              Home
-            </Link>
-          </NavbarItem>
-          <NavbarItem isActive>
-            <Link to="/about" aria-current="page">
-              About
-            </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link color="foreground" to="/products">
-              Products
-            </Link>
-          </NavbarItem>
+          {mainNavItems.map((item, index) => (
+            <NavbarItem key={index}>
+              <Link color="foreground" to={item.path} >
+                {item.label} 
+              </Link>
+            </NavbarItem>
+          ))}
         </NavbarContent>
         <NavbarContent justify="end">
           <NavbarItem className="hidden lg:flex">
