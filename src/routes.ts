@@ -22,10 +22,10 @@ export const mainNavItems: MenuItems = [
         label: 'Products',
         permissions: []
     },
-    // {
-    //     path: '/orders',
-    //     component: Orders,
-    //     label: 'Orders',
-    //     permissions: ['user']
-    // },
+    {
+        path: '/orders',
+        component: lazy(() => import('./pages/orders/Orders')),
+        label: 'Orders',
+        permissions: ['user']
+    },
 ];
