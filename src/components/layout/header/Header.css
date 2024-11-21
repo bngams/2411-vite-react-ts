@@ -1,0 +1,15 @@
+.my-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+}
+
+.container {
+  padding: 1em;
+}
+
+.my-header-title {
+  font-size: 1.2em;
+  font-weight: 700;
+}

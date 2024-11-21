@@ -1,0 +1,9 @@
+# Ignore npm dependencies:
+node_modules
+
+# Ignore next or js artifacts:
+build
+
+# Ignore config files if necessary
+*.config.js
+*.config.mjs
