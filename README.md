@@ -48,3 +48,16 @@ export default tseslint.config({
   },
 })
 ```
+
+## Running E2E tests locally
+``` npm run cy:run ``` 
+or
+``` npx cypress run ``` 
+or
+
+``` 
+npm run dev -- --host
+docker run -it   --name cypress-runner   -v $PWD:/e2e   -w /e2e   -e CYPRESS_BASE_URL=http://172.17.0.1:5173   cypress/included:13.16.0   run
+``` 
+
+

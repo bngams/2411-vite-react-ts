@@ -7,11 +7,12 @@ import { NavItems } from "./models/NavItem";
 function AppRoutes() {
     const { mainNavItems } = useNavigationCtx(); 
     const [  allNavItems, setAllNavItems ] = useState<NavItems>([]);
+    //let allNavItems = [];
 
     useEffect(() => {
       setAllNavItems([...mainNavItems, ...staticNavItems]); 
     }, [mainNavItems]); 
-
+    
     return (
       <Suspense fallback={(<div>Loading...</div>)}>
         <Routes>

@@ -38,7 +38,7 @@ const Header: React.FC = () => {
               </Badge>
             </Link>
           </NavbarItem>
-          <NavbarItem className="hidden lg:flex">
+          <NavbarItem className="">
             { !isLoggedIn ? 
               <Link to="/auth">
                 Login

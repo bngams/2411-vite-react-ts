@@ -22,3 +22,14 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Cypress-related files
+cypress/screenshots/
+cypress/videos/
+
+# Cypress cache
+.cypress_cache/
+.cypress/
+
+# Cypress configuration overrides (if any sensitive data is stored)
+cypress.env.json
