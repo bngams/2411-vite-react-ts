@@ -5,23 +5,26 @@ import { NextUIProvider } from '@nextui-org/react';
 import { BrowserRouter } from 'react-router-dom';
 import { NavigationProvider } from './providers/NavigationProvider';
 import AppRoutes from './AppRoutes';
+import { CartProvider } from './providers/CartProvider';
 
 function App() {
   return (
     <NavigationProvider>
-      <NextUIProvider>              
-        <BrowserRouter> 
-          <div className="flex flex-col min-h-screen">
-            {/* Use a Header custom component */}
-            <Header />
-            <div className="flex-grow p-4">
-              <AppRoutes />
+      <CartProvider>
+        <NextUIProvider>              
+          <BrowserRouter> 
+            <div className="flex flex-col min-h-screen">
+              {/* Use a Header custom component */}
+              <Header />
+              <div className="flex-grow p-4">
+                <AppRoutes />
+              </div>
+              {/* Use a Footer custom component */}
+              <Footer />
             </div>
-            {/* Use a Footer custom component */}
-            <Footer />
-          </div>
-        </BrowserRouter>
-      </NextUIProvider>
+          </BrowserRouter>
+        </NextUIProvider>
+      </CartProvider>
     </NavigationProvider> 
   );
 }

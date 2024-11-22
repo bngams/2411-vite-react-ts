@@ -37,4 +37,10 @@ export const staticNavItems: NavItems = [
         label: 'Product Details',
         permissions: [],
     },
+    {
+        path: '/cart',
+        component: lazy(() => import('./pages/cart/Cart')),
+        label: 'Cart',
+        permissions: [],
+    },
 ]  

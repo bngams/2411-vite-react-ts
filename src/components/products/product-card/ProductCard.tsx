@@ -2,12 +2,19 @@ import { Button, Input } from "@nextui-org/react";
 import { Product } from "../../../models/Product";
 import { ProductDisplayProps } from "../../../models/ProductDisplayMode";
 import { Link } from "react-router-dom";
+import { useCart } from "../../../providers/CartProvider";
 
 type ProductCardProps = ProductDisplayProps &  {
     product: Product;
 };
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, mode }) => {
+    const { addToCart } = useCart();
+
+    const addProductToCart = () => {
+        addToCart({product, qty: 1});
+    } 
+
     return (
         <div className={`border rounded-lg shadow-md p-4 ${
             mode === "list" ? "flex flex-col md:flex-row gap-4" : "flex items-center"
@@ -79,7 +86,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, mode }) => {
                     </Button>
                 </div>
                 )} 
-                <button className="w-full px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+                <button className="w-full px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600" 
+                    onClick={addProductToCart}>
                     Add to Cart
                 </button>
                 {mode === "detail" && (
