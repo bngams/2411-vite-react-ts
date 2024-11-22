@@ -12,6 +12,12 @@ const Header: React.FC = () => {
 
   const toggleLoggedIn = () => {
     setIsLoggedIn(!isLoggedIn);
+    // TODO: use effect
+    if(!isLoggedIn){
+      localStorage.setItem("token", "12345");
+    } else {
+      localStorage.removeItem("token");
+    } 
   } 
 
   return (

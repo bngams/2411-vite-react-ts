@@ -2,6 +2,15 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { NavItems } from "../models/NavItem";
 import { mainNavItems as items } from "../routes";
 
+const checkToken = () => {
+    const token = localStorage.getItem("token");
+    if(token) {
+        // fetch(api/hasValidSession)
+        return true;
+    } 
+    return false;
+} 
+
 const NavigationContext = createContext<{ 
     mainNavItems: NavItems,
     isLoggedIn: boolean,
@@ -14,7 +23,8 @@ const NavigationContext = createContext<{
 
 export const NavigationProvider: React.FC<{ children: React.ReactNode}> = ({ children }) => {
     const [mainNavItems, setMainNavItems] = useState<NavItems>([]);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const hasValidToken = checkToken(); //
+    const [isLoggedIn, setIsLoggedIn] = useState(hasValidToken);
 
     useEffect(() => {
         if(!isLoggedIn) {
