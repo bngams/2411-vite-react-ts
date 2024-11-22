@@ -1,10 +1,12 @@
 // src/pages/Cart.tsx
 import React from "react";
-import { useCart } from "../../providers/CartProvider";
 import ProductList from "../../components/products/products-list/ProductList";
+import { useAppDispatch, useAppSelector } from "../../hooks";
+import { clearCart } from "../../slices/CartSlice";
 
 const Cart: React.FC = () => {
-  const { cart, clearCart } = useCart();
+  const { cart } = useAppSelector((state) => state);
+  const dispatch = useAppDispatch();
 
   if (cart.items.length === 0) {
     return (
@@ -22,7 +24,7 @@ const Cart: React.FC = () => {
       </p>
       <button
         className="mb-6 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600"
-        onClick={clearCart}
+        onClick={() => dispatch(clearCart())}
       >
         Clear Cart
       </button>

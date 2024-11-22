@@ -2,5 +2,5 @@ import { CartItems } from "./CartItem";
 
 export type Cart = {
     items: CartItems;
-    updatedAt: Date;
+    updatedAt: string;
   }

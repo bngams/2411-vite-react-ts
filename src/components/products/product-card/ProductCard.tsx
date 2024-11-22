@@ -2,17 +2,21 @@ import { Button, Input } from "@nextui-org/react";
 import { Product } from "../../../models/Product";
 import { ProductDisplayProps } from "../../../models/ProductDisplayMode";
 import { Link } from "react-router-dom";
-import { useCart } from "../../../providers/CartProvider";
+import { useAppDispatch } from "../../../hooks";
+import { addToCart } from "../../../slices/CartSlice";
 
 type ProductCardProps = ProductDisplayProps &  {
     product: Product;
 };
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, mode }) => {
-    const { addToCart } = useCart();
+    const dispatch = useAppDispatch();
 
     const addProductToCart = () => {
-        addToCart({product, qty: 1});
+        dispatch(addToCart({
+            product,
+            qty: 1
+        }))
     } 
 
     return (

@@ -3,12 +3,12 @@ import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Button, Badge } from '@
 import { Link } from 'react-router-dom';
 import { useNavigationCtx } from '../../../providers/NavigationProvider';
 import { CartIcon } from './CartIcon';
-import { useCart } from '../../../providers/CartProvider';
 import { NavItem } from '../../../models/NavItem';
+import { useAppSelector } from '../../../hooks';
 
 const Header: React.FC = () => {
   const { mainNavItems, isLoggedIn, setIsLoggedIn } = useNavigationCtx();
-  const { cart } = useCart();
+  const { cart } = useAppSelector((state) => state);
 
   const logout = () => {
     setIsLoggedIn(false);    

@@ -5,12 +5,13 @@ import { NextUIProvider } from '@nextui-org/react';
 import { BrowserRouter } from 'react-router-dom';
 import { NavigationProvider } from './providers/NavigationProvider';
 import AppRoutes from './AppRoutes';
-import { CartProvider } from './providers/CartProvider';
+import { Provider } from 'react-redux';
+import { store } from './store';
 
 function App() {
   return (
-    <NavigationProvider>
-      <CartProvider>
+    <Provider store={store}>
+      <NavigationProvider>
         <NextUIProvider>              
           <BrowserRouter> 
             <div className="flex flex-col min-h-screen">
@@ -24,8 +25,8 @@ function App() {
             </div>
           </BrowserRouter>
         </NextUIProvider>
-      </CartProvider>
-    </NavigationProvider> 
+      </NavigationProvider>
+    </Provider>
   );
 }
 

@@ -3,11 +3,17 @@ import React, { createContext, useContext, useState, ReactNode } from "react";
 import { Cart } from "../models/Cart";
 import { CartItem } from "../models/CartItem";
 
+interface CartActions {
+    type: "ADD_TO_CART" | "UPDATE_QTY" | "CLEAR_CART",
+    payload: {
+        item?:CartItem;
+        id: number; // cart id
+    }   
+} 
+
 interface CartContextType {
   cart: Cart;
-  addToCart: (item: CartItem) => void; // Accept CartItem with product and qty
-  updateQty: (productId: number, qty: number) => void;
-  clearCart: () => void;
+  dispatch: Function;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -15,43 +21,25 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [cart, setCart] = useState<Cart>({ items: [], updatedAt: new Date() });
 
-  const addToCart = (newItem: CartItem) => {
-    setCart((prevCart) => {
-      const existingItem = prevCart.items.find(
-        (item) => item.product.id === newItem.product.id
-      );
+  const reducer = (cart: CartItem, action: CartActions) => {
+    switch (action.type) {
+        case "ADD_TO_CART":
+            // setCart...
+            break;
+        case "CLEAR_CART":
+            // setCart...
+            break;
+        default:
+            break;
+    }
+  } 
+  
 
-      const updatedItems = existingItem
-        ? prevCart.items.map((item) =>
-            item.product.id === newItem.product.id
-              ? { ...item, qty: item.qty + newItem.qty }
-              : item
-          )
-        : [...prevCart.items, newItem];
-
-      return { items: updatedItems, updatedAt: new Date() };
-    });
-  };
-
-  const updateQty = (productId: number, qty: number) => {
-    setCart((prevCart) => {
-      const updatedItems =
-        qty > 0
-          ? prevCart.items.map((item) =>
-              item.product.id === productId ? { ...item, qty } : item
-            )
-          : prevCart.items.filter((item) => item.product.id !== productId);
-
-      return { items: updatedItems, updatedAt: new Date() };
-    });
-  };
-
-  const clearCart = () => {
-    setCart({ items: [], updatedAt: new Date() });
-  };
+  console.log(reducer);
+  
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, updateQty, clearCart }}>
+    <CartContext.Provider value={{ cart, dispatch}}>
       {children}
     </CartContext.Provider>
   );
