@@ -10,14 +10,9 @@ const Header: React.FC = () => {
   const { mainNavItems, isLoggedIn, setIsLoggedIn } = useNavigationCtx();
   const { cart } = useCart();
 
-  const toggleLoggedIn = () => {
-    setIsLoggedIn(!isLoggedIn);
-    // TODO: use effect
-    if(!isLoggedIn){
-      localStorage.setItem("token", "12345");
-    } else {
-      localStorage.removeItem("token");
-    } 
+  const logout = () => {
+    setIsLoggedIn(false);    
+    localStorage.removeItem("token");
   } 
 
   return (
@@ -44,15 +39,23 @@ const Header: React.FC = () => {
             </Link>
           </NavbarItem>
           <NavbarItem className="hidden lg:flex">
-            <Link to="#" onClick={toggleLoggedIn}>
-              { isLoggedIn ? 'Logout' : 'Login' } 
-            </Link>
+            { !isLoggedIn ? 
+              <Link to="/auth">
+                Login
+              </Link>
+              :
+              <Link to="#" onClick={logout}>
+                Logout
+              </Link>
+            } 
           </NavbarItem>
+          { !isLoggedIn &&
           <NavbarItem>
-            <Button as={Link} color="primary" href="#" variant="flat">
+            <Button as={Link} color="primary" to="/auth/signup" variant="flat">
               Sign Up
             </Button>
           </NavbarItem>
+          } 
         </NavbarContent>
       </Navbar>
     </header>

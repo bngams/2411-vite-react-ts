@@ -43,4 +43,10 @@ export const staticNavItems: NavItems = [
         label: 'Cart',
         permissions: [],
     },
+    {
+        path: '/auth',
+        component: lazy(() => import('./pages/auth/Auth')),
+        label: 'Login',
+        permissions: [],
+    },
 ]  
